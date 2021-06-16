@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let fontsArray = ["Copperplate", "GillSans-Italic", "MarkerFelt-Wide", "CourierNewPS-BoldItalicMT", "AvenirNextCondensed-MediumItalic"]
+    
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var fontSizeSlider: UISlider!
@@ -30,8 +32,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        blackButton.layer.borderColor = UIColor.black.cgColor
+        whiteButton.layer.borderColor = UIColor.black.cgColor
+        redButton.layer.borderColor = UIColor.black.cgColor
+        yellowButton.layer.borderColor = UIColor.black.cgColor
+        blueButton.layer.borderColor = UIColor.black.cgColor
+
+        fontStylePicker.delegate = self
+        fontStylePicker.dataSource = self
+        
         fontSizeSlider.minimumValue = 1
         fontSizeSlider.maximumValue = 50
+        fontSizeSlider.value = 25
+        textView.font = UIFont.systemFont(ofSize: CGFloat(fontSizeSlider.value))
     }
     
     func changeColor(button: UIButton) {
@@ -56,6 +70,13 @@ class ViewController: UIViewController {
         }
     }
     
+    func shareButtonAction() {
+        let objectsToShare: [Any] = [textView.text ?? ""]
+        let activityController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        activityController.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+        self.present(activityController, animated: true)
+    }
+    
     @IBAction func fontSizeSliderAction(_ sender: Any) {
         textView.font = UIFont.systemFont(ofSize: CGFloat(fontSizeSlider.value))
         
@@ -67,11 +88,34 @@ class ViewController: UIViewController {
     
     @IBAction func changeFontThickness(_ sender: UIButton) {
         
+        changeFontThickness(button: sender)
+        
+    }
+    
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        shareButtonAction()
+    }
+    
+
+}
+
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        fontsArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        fontsArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textView.font = UIFont(name: fontsArray[row], size: CGFloat(fontSizeSlider.value))
     }
     
     
-    
-
-
 }
 
