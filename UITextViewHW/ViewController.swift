@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     
     let fontsArray = ["Copperplate", "GillSans-Italic", "MarkerFelt-Wide", "CourierNewPS-BoldItalicMT", "AvenirNextCondensed-MediumItalic"]
+    var selectedFont = "Copperplate"
+    var fontThicknessScore = 3
     
     
     @IBOutlet weak var textView: UITextView!
@@ -22,8 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var yellowButton: UIButton!
     @IBOutlet weak var blueButton: UIButton!
     
-    @IBOutlet weak var reduseThickness: UIButton!
-    @IBOutlet weak var increaseThickness: UIButton!
+    @IBOutlet weak var changeThickness: UIButton!
     
     @IBOutlet weak var fontStylePicker: UIPickerView!
     
@@ -41,11 +42,14 @@ class ViewController: UIViewController {
 
         fontStylePicker.delegate = self
         fontStylePicker.dataSource = self
+        fontStylePicker.selectRow(0, inComponent: 0, animated: true)
         
         fontSizeSlider.minimumValue = 1
         fontSizeSlider.maximumValue = 50
         fontSizeSlider.value = 25
-        textView.font = UIFont.systemFont(ofSize: CGFloat(fontSizeSlider.value))
+        
+        textView.font = UIFont(name: selectedFont, size: CGFloat(fontSizeSlider.value))
+        
     }
     
     func changeColor(button: UIButton) {
@@ -60,13 +64,11 @@ class ViewController: UIViewController {
         }
     }
     
-    func changeFontThickness(button: UIButton) {
-        switch button {
-        case increaseThickness:
+    func changeFontThickness() {
+        if textView.text == textView.text.capitalized {
             textView.text = textView.text.uppercased()
-        case reduseThickness: textView.text = textView.text.lowercased()
-        default:
-            return
+        } else {
+            textView.text = textView.text.capitalized
         }
     }
     
@@ -78,8 +80,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func fontSizeSliderAction(_ sender: Any) {
-        textView.font = UIFont.systemFont(ofSize: CGFloat(fontSizeSlider.value))
-        
+        textView.font = UIFont(name: selectedFont, size: CGFloat(fontSizeSlider.value))
     }
     
     @IBAction func changeColorAction(_ sender: UIButton) {
@@ -87,16 +88,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeFontThickness(_ sender: UIButton) {
-        
-        changeFontThickness(button: sender)
-        
+        changeFontThickness()
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {
         shareButtonAction()
     }
     
-
 }
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -113,6 +111,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedFont = fontsArray[row]
         textView.font = UIFont(name: fontsArray[row], size: CGFloat(fontSizeSlider.value))
     }
     

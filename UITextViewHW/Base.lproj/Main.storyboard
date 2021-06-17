@@ -105,14 +105,15 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="9SO-46-dq4">
-                                <rect key="frame" x="20" y="744" width="68" height="49"/>
+                                <rect key="frame" x="20" y="744" width="65.5" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5f-5D-FbN">
-                                        <rect key="frame" x="0.0" y="0.0" width="21" height="49"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="49"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="a" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="light"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="a" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="regular"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -126,28 +127,10 @@
                                             <action selector="changeFontThickness:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UKw-Kf-Wgm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrw-nW-abI">
-                                        <rect key="frame" x="45" y="0.0" width="23" height="49"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="a" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" weight="bold"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="changeFontThickness:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wsv-se-iDQ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhD-40-Cer">
-                                <rect key="frame" x="96" y="771" width="298" height="80"/>
+                                <rect key="frame" x="93.5" y="771" width="298" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="298" id="h7w-Ol-u46"/>
                                     <constraint firstAttribute="height" constant="80" id="hZi-Pd-Xx5"/>
@@ -164,7 +147,7 @@
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfl-RK-RYF">
-                                <rect key="frame" x="39" y="801" width="30" height="49"/>
+                                <rect key="frame" x="39" y="801" width="27.5" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="square.and.arrow.up" catalog="system">
@@ -211,11 +194,10 @@
                     <connections>
                         <outlet property="blackButton" destination="Vjc-Bw-DmP" id="dJ7-ds-LCw"/>
                         <outlet property="blueButton" destination="wda-dU-30o" id="Uyd-bs-Epk"/>
+                        <outlet property="changeThickness" destination="L5f-5D-FbN" id="65e-oy-Eqv"/>
                         <outlet property="fontSizeSlider" destination="MTT-cO-tfk" id="iAR-q9-EyC"/>
                         <outlet property="fontStylePicker" destination="DhD-40-Cer" id="6t3-Ae-s5t"/>
-                        <outlet property="increaseThickness" destination="zrw-nW-abI" id="aoG-Sz-IRh"/>
                         <outlet property="redButton" destination="xNt-Pg-nEv" id="Ma4-EX-BRi"/>
-                        <outlet property="reduseThickness" destination="L5f-5D-FbN" id="65e-oy-Eqv"/>
                         <outlet property="shareButton" destination="Rfl-RK-RYF" id="FRV-oc-6e5"/>
                         <outlet property="textView" destination="6mT-rg-RjB" id="nWw-2w-Qgh"/>
                         <outlet property="whiteButton" destination="sFP-EX-7i4" id="Cke-Nh-oYp"/>
